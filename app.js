@@ -1,6 +1,28 @@
+//? Dependencies
+
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
+
+/////////////////////////////////////////////////////////////////////
+
+//? variables working Synchronously
+
+const data = fs.readFileSync(`${__dirname}/Data/data.json`, 'utf-8');
+const productObject = JSON.parse(data);
+const tempOverview = fs.readFileSync(
+	`${__dirname}/temp/tempOverview.html`,
+	'utf-8'
+);
+const tempCard = fs.readFileSync(`${__dirname}/temp/tempCard.html`, 'utf-8');
+const tempProduct = fs.readFileSync(
+	`${__dirname}/temp/tempProduct.html`,
+	'utf-8'
+);
+
+///////////////////////////////////////////////////////////////////
+
+//! Function to replace html templates elements dynamically
 
 const replaceTemplate = function (temp, product) {
 	let output = temp.replace(/{%PRODUCTNAME%/g, product.productName);
@@ -18,17 +40,9 @@ const replaceTemplate = function (temp, product) {
 	return output;
 };
 
-const data = fs.readFileSync(`${__dirname}/Data/data.json`, 'utf-8');
-const productObject = JSON.parse(data);
-const tempOverview = fs.readFileSync(
-	`${__dirname}/temp/tempOverview.html`,
-	'utf-8'
-);
-const tempCard = fs.readFileSync(`${__dirname}/temp/tempCard.html`, 'utf-8');
-const tempProduct = fs.readFileSync(
-	`${__dirname}/temp/tempProduct.html`,
-	'utf-8'
-);
+//////////////////////////////////////////////////////////////////////
+
+//! Starting a server
 
 const server = http.createServer((req, res) => {
 	const { query, pathname } = url.parse(req.url, true);
