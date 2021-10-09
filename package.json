@@ -1,0 +1,23 @@
+{
+	"name": "farmerceutical",
+	"version": "1.0.0",
+	"description": "",
+	"main": "app.js",
+	"scripts": {
+		"start": "nodemon app.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/teyddie22/farmerceutical.git"
+	},
+	"author": "Teddy Yongo",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/teyddie22/farmerceutical/issues"
+	},
+	"homepage": "https://github.com/teyddie22/farmerceutical#readme",
+	"dependencies": {},
+	"devDependencies": {
+		"nodemon": "^2.0.13"
+	}
+}

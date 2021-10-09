@@ -3,7 +3,6 @@
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
-const slugify = require('slugify');
 
 //?File modules
 
@@ -32,12 +31,6 @@ const tempProduct = fs.readFileSync(
 //////////////////////////////////////////////////////////////////////
 
 //* Adding slugify to the product names;
-
-const slugs = productObject.map((element) =>
-	slugify(element.productName, { lower: true })
-);
-
-console.log(slugs);
 
 //! Starting a server
 
