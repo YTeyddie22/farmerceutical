@@ -3,6 +3,7 @@
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
+const slugify = require('slugify');
 
 //?File modules
 
@@ -13,18 +14,30 @@ const replaceTemplate = require('./module/replaceTemp');
 //? variables working Synchronously
 
 const data = fs.readFileSync(`${__dirname}/Data/data.json`, 'utf-8');
+
 const productObject = JSON.parse(data);
+
 const tempOverview = fs.readFileSync(
 	`${__dirname}/temp/tempOverview.html`,
 	'utf-8'
 );
+
 const tempCard = fs.readFileSync(`${__dirname}/temp/tempCard.html`, 'utf-8');
+
 const tempProduct = fs.readFileSync(
 	`${__dirname}/temp/tempProduct.html`,
 	'utf-8'
 );
 
 //////////////////////////////////////////////////////////////////////
+
+//* Adding slugify to the product names;
+
+const slugs = productObject.map((element) =>
+	slugify(element.productName, { lower: true })
+);
+
+console.log(slugs);
 
 //! Starting a server
 
